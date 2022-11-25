@@ -5,54 +5,68 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:model="clr-namespace:MonkeyFinder.Model"
     xmlns:viewmodel="clr-namespace:MonkeyFinder.ViewModel"
-    x:DataType="viewmodel:MonkeysViewModel"
+    x:DataType="viewmodel:RakjegyzeksViewModel"
     Title="{Binding Title}">
-    <Grid
+    <StackLayout Margin="100,20,100,20">
+        <VerticalStackLayout BackgroundColor="LightPink"
+                                    VerticalOptions="Center"
+                                    Grid.Column="1"
+                                    Padding="10">
+            <Label Style="{StaticResource LargeLabel}" TextColor="Green" BackgroundColor="White" HeightRequest="80">Rakjegy</Label>
+            <Entry x:Name="aktJegy" Text="{Binding AktRakjegy}"></Entry>
+            <!--<ListView ItemsSource="{Binding Rakjegyzeks}">
+                </ListView>-->
+            <Button Text="Felrak"   HeightRequest="80" Command="{Binding PutItemToRaklapCommand}"></Button>
+        </VerticalStackLayout>
+        <Grid MaximumHeightRequest="300"
         ColumnDefinitions="*,*"
         ColumnSpacing="5"
         RowDefinitions="*,Auto"
         RowSpacing="0">
-        <CollectionView
+            <CollectionView
             Grid.ColumnSpan="2"
-            ItemsSource="{Binding Monkeys}"
+            ItemsSource="{Binding Rakjegyzeks}"            
             SelectionMode="None">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Monkey">
-                    <Grid Padding="10">
-                        <Frame HeightRequest="125" Style="{StaticResource CardView}">
-                            <Grid Padding="0" ColumnDefinitions="125,*">
-                                <Image Aspect="AspectFill" Source="{Binding Image}"
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Rakjegyzek">
+                        <Grid Padding="10">
+                            <Frame HeightRequest="80" Style="{StaticResource CardView}">
+                                <Grid Padding="0" ColumnDefinitions="60,*">
+                                    <!--<Image Aspect="AspectFill" Source="{Binding Image}"
                                        WidthRequest="125"
-                                       HeightRequest="125"/>
-                                <VerticalStackLayout
+                                       HeightRequest="125"/>-->
+                                    <Label Padding="10" VerticalOptions="Center" Style="{StaticResource LargeLabel}" Text="{Binding Id}" />
+                                    <HorizontalStackLayout
                                     VerticalOptions="Center"
                                     Grid.Column="1"
                                     Padding="10">
-                                    <Label Style="{StaticResource LargeLabel}" Text="{Binding Name}" />
-                                    <Label Style="{StaticResource MediumLabel}" Text="{Binding Location}" />
-                                </VerticalStackLayout>
-                            </Grid>
-                        </Frame>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                                        <Label Style="{StaticResource LargeLabel}" Text="{Binding Rakjegy}" />
+                                        <!--<Entry Style="{StaticResource LargeEntry}" Text="{Binding Rakjegy}" />-->
+                                        <!--<CheckBox IsChecked="{Binding Felrakva}" />-->
+                                    </HorizontalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-        <Button Text="Get Monkeys" 
-                Command="{Binding GetMonkeysCommand}"
+            <!--<Button Text="Get Rakjegyzeks" 
+                Command="{Binding GetRakjegyzeksCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Grid.Row="1"
                 Grid.Column="0"
                 Style="{StaticResource ButtonOutline}"
-                Margin="8"/>
+                Margin="8"/>-->
 
 
-        <ActivityIndicator IsVisible="{Binding IsBusy}"
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
                            IsRunning="{Binding IsBusy}"
                            HorizontalOptions="Fill"
                            VerticalOptions="Center"
                            Color="{StaticResource Primary}"
                            Grid.RowSpan="2"
                            Grid.ColumnSpan="2"/>
-    </Grid>
+        </Grid>
+    </StackLayout>
 </ContentPage>

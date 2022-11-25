@@ -37,4 +37,14 @@
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="View\DetailsPage.xaml.cs" />
+	  <Compile Remove="View\MainPage - Copy.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Remove="View\DetailsPage.xaml" />
+	  <MauiXaml Remove="View\MainPage - Copy.xaml" />
+	</ItemGroup>
 </Project>

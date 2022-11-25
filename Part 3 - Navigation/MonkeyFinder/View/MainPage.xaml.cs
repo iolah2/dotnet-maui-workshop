@@ -2,10 +2,20 @@
 
 public partial class MainPage : ContentPage
 {
-	public MainPage(MonkeysViewModel viewModel)
+    private RakjegyzeksViewModel _viewModel;
+
+    public MainPage(RakjegyzeksViewModel viewModel)
 	{
 		InitializeComponent();
-		BindingContext = viewModel;
-	}
+		BindingContext = _viewModel = viewModel;
+        IsBusy = false;
+        //await GetRakjegyzeksAsync();
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        _viewModel.OnAppearing();
+    }
 }
 

@@ -13,15 +13,16 @@
                                     Grid.Column="1"
                                     Padding="10">
             <Label Style="{StaticResource LargeLabel}" TextColor="Green" BackgroundColor="White" HeightRequest="80">Rakjegy</Label>
-            <Entry x:Name="aktJegy" Text="{Binding AktRakjegy}"></Entry>
+            <Entry x:Name="aktJegy" Text="{Binding AktRakjegy}" HeightRequest="20"></Entry>
             <!--<ListView ItemsSource="{Binding Rakjegyzeks}">
                 </ListView>-->
-            <Button Text="Felrak"   HeightRequest="80" Command="{Binding PutItemToRaklapCommand}"></Button>
+            <Button Text="Felrak"   HeightRequest="20" Command="{Binding PutItemToRaklapCommand}"></Button>
+            <Button Text="Frissít"   HeightRequest="20" Command="{Binding LoadItemsCommand}"></Button>
         </VerticalStackLayout>
         <Grid MaximumHeightRequest="300"
         ColumnDefinitions="*,*"
         ColumnSpacing="5"
-        RowDefinitions="*,Auto"
+        RowDefinitions="400,Auto"
         RowSpacing="0">
             <CollectionView
             Grid.ColumnSpan="2"
@@ -29,18 +30,18 @@
             SelectionMode="None">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Rakjegyzek">
-                        <Grid Padding="10">
-                            <Frame HeightRequest="80" Style="{StaticResource CardView}">
-                                <Grid Padding="0" ColumnDefinitions="60,*">
+                        <Grid Padding="1">
+                            <Frame HeightRequest="20" Style="{StaticResource CardView}">
+                                <Grid Padding="0" ColumnDefinitions="*,2*">
                                     <!--<Image Aspect="AspectFill" Source="{Binding Image}"
                                        WidthRequest="125"
                                        HeightRequest="125"/>-->
-                                    <Label Padding="10" VerticalOptions="Center" Style="{StaticResource LargeLabel}" Text="{Binding Id}" />
+                                    <Label WidthRequest="100" Padding="1" VerticalOptions="Center" Style="{StaticResource LargeLabel}" Text="{Binding Id}" />
                                     <HorizontalStackLayout
                                     VerticalOptions="Center"
                                     Grid.Column="1"
-                                    Padding="10">
-                                        <Label Style="{StaticResource LargeLabel}" Text="{Binding Rakjegy}" />
+                                    Padding="1">
+                                        <Label WidthRequest="200" Style="{StaticResource LargeLabel}" Text="{Binding Rakjegy}" />
                                         <!--<Entry Style="{StaticResource LargeEntry}" Text="{Binding Rakjegy}" />-->
                                         <!--<CheckBox IsChecked="{Binding Felrakva}" />-->
                                     </HorizontalStackLayout>

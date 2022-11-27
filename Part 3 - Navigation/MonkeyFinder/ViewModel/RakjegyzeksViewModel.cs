@@ -33,6 +33,7 @@ namespace MonkeyFinder.ViewModel
                 return;
             }
             await rakjegyzekService.PutItemToFelrakAsync((int)id);
+            //await rakjegyzekService.PutItemToFelrakAsync(AktRakjegy);
             Debug.WriteLine($"{AktRakjegy} felrakva.");//await DataStore.GetItemsAsync();//SelectedItem.Felrakva = true;
             //await GetRakjegyzeksAsync();
             await Shell.Current.DisplayPromptAsync("Sikeres felrakás!", $"{AktRakjegy} felrakva.", "OK");
@@ -64,8 +65,8 @@ namespace MonkeyFinder.ViewModel
                 int i = 0;
                 foreach (var rakjegyzek in rakjegyzeks)
                 {
-                    if (++i > 5)
-                        break;
+                    //if (++i > 5)
+                      //  break;
                     Rakjegyzeks.Add(rakjegyzek);
                 }
                 //OnPropertyChanged(nameof(Rakjegyzeks));

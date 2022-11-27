@@ -47,4 +47,13 @@
 	  <MauiXaml Remove="View\DetailsPage.xaml" />
 	  <MauiXaml Remove="View\MainPage - Copy.xaml" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Platforms\iOS\HttpClientHelper.cs">
+	    <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+	  </Compile>
+	  <Compile Update="Platforms\MacCatalyst\HttpClientHelper.cs">
+	    <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+	  </Compile>
+	</ItemGroup>
 </Project>
